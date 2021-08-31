@@ -11,6 +11,7 @@
 
 const SHA256 = require('crypto-js/sha256');
 const hex2ascii = require('hex2ascii');
+const debug  = require('debug')('block');
 
 class Block {
 
@@ -36,6 +37,7 @@ class Block {
      *  Note: to access the class values inside a Promise code you need to create an auxiliary value `let self = this;`
      */
     validate() {
+	debug('validate');
         let self = this;
         return new Promise((resolve, reject) => {
             // Save in auxiliary variable the current block hash
@@ -76,6 +78,7 @@ class Block {
      *     or Reject with an error.
      */
     getBData() {
+	debug('getBData');
         // Getting the encoded data saved in the Block
         // Decoding the data to retrieve the JSON representation of the object
         // Parse the data to an object to be retrieve.
