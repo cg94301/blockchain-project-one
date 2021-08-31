@@ -69,7 +69,8 @@ class Blockchain {
         let self = this;
         return new Promise(async (resolve, reject) => {
 
-	    let chain_valid = await this.validateChain();
+	    let error_log = await this.validateChain();
+	    let chain_valid = (error_log.length === 0);
 	    
 	    block.height = this.chain.length;
             block.time = new Date().getTime().toString().slice(0,-3);
