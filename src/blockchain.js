@@ -50,7 +50,7 @@ class Blockchain {
             resolve(this.height);
         });
     }
-
+    
     /**
      * _addBlock(block) will store a block in the chain
      * @param {*} block 
@@ -67,7 +67,10 @@ class Blockchain {
 	console.log('add block');
 
         let self = this;
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
+
+	    let chain_valid = await this.validateChain();
+	    
 	    block.height = this.chain.length;
             block.time = new Date().getTime().toString().slice(0,-3);
 	    if (this.chain.length > 0){
@@ -78,7 +81,7 @@ class Blockchain {
 	    this.chain.push(block);
 	    this.height = this.chain.length;
 
-	    if (block.hash) {
+	    if (chain_valid && block.hash) {
 		resolve(block);
 	    } else {
 		reject(Error('Cannot add block'));
