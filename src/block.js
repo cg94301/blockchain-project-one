@@ -82,8 +82,7 @@ class Block {
 	
         // Resolve with the data if the object isn't the Genesis block
 	
-	let data = JSON.parse(hex2ascii(this.body));
-	return data;
+	return JSON.parse(hex2ascii(this.body));
 	
     }
 
