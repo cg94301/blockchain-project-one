@@ -12,7 +12,7 @@ To run the code:
 
 `npm install`
 
-`node app.js`
+`DEBUG=blockchain,block,app node app.js`
 
 Then use Postman to test API as shown in UDACITY.md.
 
